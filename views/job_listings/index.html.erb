@@ -1,0 +1,32 @@
+<!-- app/views/job_listings/index.html.erb -->
+<h1>Job Listings</h1>
+
+<ul>
+  <% @jobs.each do |job| %>
+    <li>
+      <h3><%= job.title %></h3>
+      <p><%= job.company %></p>
+      <p><%= job.location %></p>
+    </li>
+  <% end %>
+</ul>
+
+<!-- app/views/job_listings/search.html.erb -->
+<h1>Search Job Listings</h1>
+
+<%= form_tag job_listings_search_path, method: :get do %>
+  <%= text_field_tag :q, params[:q], placeholder: 'Search jobs...' %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+<h2>Search Results:</h2>
+
+<ul>
+  <% @search_results.each do |job| %>
+    <li>
+      <h3><%= job.title %></h3>
+      <p><%= job.company %></p>
+      <p><%= job.location %></p>
+    </li>
+  <% end %>
+</ul>
